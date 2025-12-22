@@ -1,9 +1,16 @@
-# Import socket module
-import socket
+# Import socket module 
+import socket as sock            
 
-clint_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-clint_socket.connect(("127.0.0.1",12345)) # connect to server
+# Create a socket object
+s = sock.socket(sock.AF_INET, sock.SOCK_STREAM)         
 
-print("Server connected.")
-clint_socket.close()
-print("Client socket closed.")
+# Define the port on which you want to connect 
+port = 12345               
+
+# connect to the server on local computer 
+s.connect(('127.0.0.1', port)) 
+
+# receive data from the server and decoding to get the string.
+print(s.recv(1024).decode())
+# close the connection 
+#s.close()
